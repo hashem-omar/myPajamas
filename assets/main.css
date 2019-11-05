@@ -1,4 +1,4 @@
-#navDiv {
+nav {
   display: flex;
 }
 
@@ -19,6 +19,7 @@ li a {
   color: black;
   padding: 20px 10px 10px 30px;
   text-decoration: none;
+  cursor: pointer;
 }
 
 #name {
@@ -27,7 +28,7 @@ li a {
   margin-bottom: 20px
 }
 
-#storesDiv {
+#mainDiv {
   text-align: center;
   columns: 4
 }
@@ -36,6 +37,7 @@ img {
   width: 200px;
   height: 150px;
   padding: 50px; 
+  cursor: pointer;  
 }
 
 /*body {
