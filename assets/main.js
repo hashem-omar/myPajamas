@@ -84,20 +84,27 @@ function display() {
 	return {
 		displayStores: function() {
 			for (var i = 0; i < stores.length; i++) {
-				$('<a class="storeLink"></a>').appendTo('#mainDiv').append($('<img>').attr('src', stores[i].src))
+				$('<a class="storeLink"></a>').appendTo('#mainDiv').append($('<img>').attr('src', stores[i].src).attr('id', 'imgg'))
 			}
 
 			$('.storeLink').click(function() {
 				newPage();
 					for (var i = 0; i < products.length; i++) {
-						$('#mainDiv').append($('<a id="productLink"></a>')
-						.append($('<img>').attr('src', products[i].src))).append(products[i].name + '\n' + products[i].price + '\n' + products[i].size, $('<input type="checkbox">').attr('id',i))
+						$('#mainDiv').append($('<div id="stDiv"></div>').append($('<card id="productLink"></card>')
+						.append($('<img>').attr('src', products[i].src))
+						.append($('<div></div>')
+							.append($('<h3></h3>')
+								.append(products[i].name), $('<br>'), $('<p></p>')
+								.append(products[i].price), $('<br>'), $('<p></p>')
+								.append(products[i].size), $('<input type="checkbox">').attr('id',i)))))
 					}
 
 				$('#mainDiv').append(
 				 buttons()
 				)
-			});
+			}
+
+			);
 		},
 
 		displayMen: function() {
@@ -169,9 +176,7 @@ $('#cart').click(function() {
 		bill.push(totalPrice);
 		bill.push(billNo++);
 	})
-}
-
-);
+});
 
 
 
@@ -182,15 +187,9 @@ $('#cart').click(function() {
 
 
 $('body').css('background-image',
-	'url("https://images.cdn2.stockunlimited.net/preview1300/men-s-clothing-and-accessories-with-white-background_1976584.jpg")')
+	'url("https://dexorate.com/12-minimalist-bedroom-design-ideas-for-cozy-bedroom-inspiration/amazing-minimalist-bedroom-ideas/")')
 .css('background-repeat', 'no-repeat')
-.css('background-size', 'cover');
+.css('background-size', '100%')
+.css('background-blend-mode', 'darken');
 
-
-// <div class="card">
-//   <img src="img_avatar.png" alt="Avatar" style="width:100%">
-//   <div class="container">
-//     <h4><b>John Doe</b></h4> 
-//     <p>Architect & Engineer</p> 
-//   </div>
-// </div>
+// $('h3').
