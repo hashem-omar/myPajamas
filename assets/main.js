@@ -1,3 +1,6 @@
+var cart = [];
+var filtered = [];
+
 var stores = [
 	{
 		id: 1,
@@ -40,7 +43,7 @@ var stores = [
 	},
 
 ]; //id, src
-var cart = []
+
 var products = [
 	{
 		name: 'PajamaGram Fleece Pajamas Women Soft - Winter Pajamas',
@@ -73,15 +76,12 @@ $('#storeLink').click(function() {
 	$('body').html('<header id="header"></header><div id="navDiv"><ul><li id="name"><a href="#index.html"> MY PAJAMAS </a></li><li><a href="#ourServices"> our services </a></li><li><a href="#aboutUs"> about us </a> </li> <li> <a href="#stores"> stores </a> </li> </ul></div>  <div id="productDiv"></div>');
 for (var i = 0; i < products.length; i++) {
 	$('body').append($('<a id="productLink"></a>').appendTo('#productDiv')
-		.append($('<img>').attr('src', products[i].src))).append(products[i].name + '\n' + products[i].price + '\n' +products[i].size)
-	.append($('<input type="checkbox" onclick="myFunction()">').attr('id',i));
+		.append($('<img>').attr('src', products[i].src))).append(products[i].name + '\n' + products[i].price + '\n' + products[i].size)
+	.append($('<input type="checkbox">').attr('id',i));
 	}
 	$('body').append('<input type ="button" value="Add to Cart" onclick="cartAdd()">').append('<input type ="button" value="men" onclick="displayMen()">','<input type ="button" value="women" onclick="displayWomen()">','<input type ="button" value="kids" onclick="displayKids()">')
 });
 
-function myFunction() {
-
-}
 
 function cartAdd() {
 	for (var i = 0; i < products.length; i++) {	
@@ -91,15 +91,30 @@ function cartAdd() {
 	}
 }
 
-function displayMen() {
-	$('body').html('<header id="header"></header><div id="navDiv"><ul><li id="name"><a href="#index.html"> MY PAJAMAS </a></li><li><a href="#ourServices"> our services </a></li><li><a href="#aboutUs"> about us </a> </li> <li> <a href="#stores"> stores </a> </li> </ul></div>  <div id="productDiv"></div>');
-	for (var i = 0; i < products.length; i++) {
-		if (products[i].cat === 'men') {
-			$('body').append().append($('<a id="productLink"></a>').appendTo('#productDiv')
-		.append($('<img>').attr('src', products[i].src))).append(products[i].name + '\n' + products[i].price + '\n' +products[i].size)
-	.append($('<input type="checkbox">').attr('id', i)).append('<input type ="button" value="Add to Cart" onclick="cartAdd()">').append('<input type ="button" value="men" onclick="displayMen()">','<input type ="button" value="women" onclick="displayWomen()">','<input type ="button" value="kids" onclick="displayKids()">');
+function cartAddFiltered() {
+	for (var i = 0; i < filtered.length; i++) {	
+		if(document.getElementById(i).checked) {	
+			cart.push(filtered[i])
 		}
 	}
+}
+
+function displayMen() {
+	for (var i = 0; i < products.length; i++) {
+		if (products[i].cat === 'men') {
+			filtered.push(products[i]);
+		}
+	}
+
+
+	$('body').html('<header id="header"></header><div id="navDiv"><ul><li id="name"><a href="#index.html"> MY PAJAMAS </a></li><li><a href="#ourServices"> our services </a></li><li><a href="#aboutUs"> about us </a> </li> <li> <a href="#stores"> stores </a> </li> </ul></div>  <div id="productDiv"></div>');
+	for (var i = 0; i < filtered.length; i++) {
+			$('body').append($('<a id="productLink"></a>').appendTo('#productDiv')
+		.append($('<img>').attr('src', filtered[i].src))).append(filtered[i].name + '\n' + filtered[i].price + '\n' +filtered[i].size)
+			.append($('<input type="checkbox">').attr('id', i));
+	}
+
+	$('body').append('<input type ="button" value="Add to Cart" onclick="cartAddFiltered()">').append('<input type ="button" value="men" onclick="displayMen()">','<input type ="button" value="women" onclick="displayWomen()">','<input type ="button" value="kids" onclick="displayKids()">');
 }
 
 
