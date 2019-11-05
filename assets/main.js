@@ -1,3 +1,6 @@
+var cart = [];
+var filtered = [];
+
 var stores = [
 	{
 		id: 1,
@@ -41,18 +44,140 @@ var stores = [
 
 ]; //id, src
 
+var products = [
+	{
+		name: 'PajamaGram Fleece Pajamas Women Soft - Winter Pajamas',
+		price: '$29.99',
+		cat: 'kids',
+		size: 'M',
+		src: 'https://images-na.ssl-images-amazon.com/images/I/61qyubA6SkL._UY879_.jpg'
+	},
+		{
+		name: 'PajamaGram Fleece Pajamas Women Soft - Winter Pajamas',
+		price: '$49.99',
+		cat: 'women',
+		size: 'S',
+		src: 'https://images-na.ssl-images-amazon.com/images/I/61K7WodBFgL._SY879._SX._UX._SY._UY_.jpg'
+	},
+		{
+		name: 'Hanes Men\'s Micro Fleece Pant Set with Waffle Top',
+		price: '$23.03',
+		cat: 'men',
+		size: 'L',
+		src: 'https://images-na.ssl-images-amazon.com/images/I/51quRSwZw%2BL._UX679_.jpg'
+	}
+];
+
 for (var i = 0; i < stores.length; i++) {
-	$('<a id="storeLink"></a>').appendTo('#storesDiv').append($('<img>').appendTo('#storesDiv').attr('src', stores[i].src)).attr('href', function() {
-		if (stores[i].id === 1) {
-			$('#storeLink').attr('href', 'zara.html');
-		} else if (stores[i].id === 2) {
-			$('#storeLink').attr('href', 'index.html');
-		}
-	});
+	$('<a id="storeLink"></a>').appendTo('#storesDiv').append($('<img>').attr('src', stores[i].src))
 }
 
-// $('<img id="background">').appendTo('body').attr('src', 'https://images.cdn2.stockunlimited.net/preview1300/men-s-clothing-and-accessories-with-white-background_1976584.jpg')
+$('#storeLink').click(function() {
+	$('body').html('<header id="header"></header><div id="navDiv"><ul><li id="name"><a href="#index.html"> MY PAJAMAS </a></li><li><a href="#ourServices"> our services </a></li><li><a href="#aboutUs"> about us </a> </li> <li> <a href="#stores"> stores </a> </li> <li><a href="#cart" id="cart"> myCart </a></li></ul></div>  <div id="productDiv"></div>');
+for (var i = 0; i < products.length; i++) {
+	$('body').append($('<a id="productLink"></a>').appendTo('#productDiv')
+		.append($('<img>').attr('src', products[i].src))).append(products[i].name + '\n' + products[i].price + '\n' + products[i].size)
+	.append($('<input type="checkbox">').attr('id',i));
+	}
+	$('body').append('<input type ="button" value="Add to Cart" onclick="cartAdd()">').append('<input type ="button" value="men" onclick="displayMen()">','<input type ="button" value="women" onclick="displayWomen()">','<input type ="button" value="kids" onclick="displayKids()">')
+});
+
+
+function cartAdd() {
+	for (var i = 0; i < products.length; i++) {	
+		if(document.getElementById(i).checked) {	
+			cart.push(products[i])
+		}
+	}
+}
+
+function cartAddFiltered() {
+	for (var i = 0; i < filtered.length; i++) {	
+		if(document.getElementById(i).checked) {	
+			cart.push(filtered[i])
+		}
+	}
+}
+
+function displayMen() {
+	$('body').html('<header id="header"></header><div id="navDiv"><ul><li id="name"><a href="#index.html"> MY PAJAMAS </a></li><li><a href="#ourServices"> our services </a></li><li><a href="#aboutUs"> about us </a> </li> <li> <a href="#stores"> stores </a> </li>  <li><a href="#cart" id="cart"> myCart </a></li></ul></div>  <div id="productDiv"></div>');
+	for (var i = 0; i < products.length; i++) {
+		if (products[i].cat === 'men') {
+			filtered.push(products[i]);
+		}
+	}
+
+
+	for (var i = 0; i < filtered.length; i++) {
+			$('body').append($('<a id="productLink"></a>').appendTo('#productDiv')
+		.append($('<img>').attr('src', filtered[i].src))).append(filtered[i].name + '\n' + filtered[i].price + '\n' +filtered[i].size)
+			.append($('<input type="checkbox">').attr('id', i));
+	}
+
+	$('body').append('<input type ="button" value="Add to Cart" onclick="cartAddFiltered()">').append('<input type ="button" value="women" onclick="displayWomen()">','<input type ="button" value="kids" onclick="displayKids()">');
+}
+
+function displayWomen() {
+	$('body').html('<header id="header"></header><div id="navDiv"><ul><li id="name"><a href="#index.html"> MY PAJAMAS </a></li><li><a href="#ourServices"> our services </a></li><li><a href="#aboutUs"> about us </a> </li> <li> <a href="#stores"> stores </a> </li> </ul></div>  <div id="productDiv"></div>');
+	for (var i = 0; i < products.length; i++) {
+		if (products[i].cat === 'women') {
+			filtered.push(products[i]);
+		}
+	}
+
+
+	for (var i = 0; i < filtered.length; i++) {
+			$('body').append($('<a id="productLink"></a>').appendTo('#productDiv')
+		.append($('<img>').attr('src', filtered[i].src))).append(filtered[i].name + '\n' + filtered[i].price + '\n' +filtered[i].size)
+			.append($('<input type="checkbox">').attr('id', i));
+	}
+
+	$('body').append('<input type ="button" value="Add to Cart" onclick="cartAddFiltered()">').append('<input type ="button" value="men" onclick="displayMen()">', '<input type ="button" value="kids" onclick="displayKids()">');
+}
+
+function displayKids() {
+	$('body').html('<header id="header"></header><div id="navDiv"><ul><li id="name"><a href="#index.html"> MY PAJAMAS </a></li><li><a href="#ourServices"> our services </a></li><li><a href="#aboutUs"> about us </a> </li> <li> <a href="#stores"> stores </a> </li> </ul></div>  <div id="productDiv"></div>');
+	for (var i = 0; i < products.length; i++) {
+		if (products[i].cat === 'kids') {
+			filtered.push(products[i]);
+		}
+	}
+
+
+	for (var i = 0; i < filtered.length; i++) {
+			$('body').append($('<a id="productLink"></a>').appendTo('#productDiv')
+		.append($('<img>').attr('src', filtered[i].src))).append(filtered[i].name + '\n' + filtered[i].price + '\n' +filtered[i].size)
+			.append($('<input type="checkbox">').attr('id', i));
+	}
+
+	$('body').append('<input type ="button" value="Add to Cart" onclick="cartAddFiltered()">').append('<input type ="button" value="men" onclick="displayMen()">','<input type ="button" value="women" onclick="displayWomen()">');
+}
+
+$('#cart').click(function() {
+	$('#storesDiv').html('');
+	for (var i = 0; i < cart.length; i++) {
+	$('#storesDiv').append($('<a id="productLink"></a>').appendTo('#productDiv')
+		.append($('<img>').attr('src', cart[i].src))).append(cart[i].name + '\n' + cart[i].price + '\n' + cart[i].size)
+	.append($('<input type="checkbox">').attr('id',i));
+	}
+});
+
+
+
+
+
+
+
 $('#storesDiv').css('background-image',
 	'url("https://images.cdn2.stockunlimited.net/preview1300/men-s-clothing-and-accessories-with-white-background_1976584.jpg")')
 .css('background-repeat', 'no-repeat')
 .css('background-size', 'cover');
+
+
+// <div class="card">
+//   <img src="img_avatar.png" alt="Avatar" style="width:100%">
+//   <div class="container">
+//     <h4><b>John Doe</b></h4> 
+//     <p>Architect & Engineer</p> 
+//   </div>
+// </div>
