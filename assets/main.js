@@ -1,6 +1,10 @@
+//cart will hold the selected products
 var cart = [];
+//uniqe secuence bill number starting from 1
 var billNo = 1;
+//bill contains the cart item and total  price and buyer info
 var bill = [];
+// the prands in the store 
 var stores = [
 	{
 		id: 1,
@@ -43,7 +47,7 @@ var stores = [
 	},
 
 ];
-
+// products list
 var products = [
 	{
 		name: 'PajamaGram Fleece Pajamas Women Soft - Winter Pajamas',
@@ -67,10 +71,11 @@ var products = [
 		src: 'https://images-na.ssl-images-amazon.com/images/I/51quRSwZw%2BL._UX679_.jpg'
 	}
 ];
-
+// make page empty
 var newPage = function() {
 	$('#mainDiv').html('');
 }
+//shooping buttons
 var buttons = function() {
 	$('#mainDiv').append
 		('<input id="cartButton" type ="button" value="Add to Cart" onclick="cartAdd()">',
@@ -79,7 +84,7 @@ var buttons = function() {
 		 '<input id="kidsButton" type ="button" value="kids" onclick="display.displayKids()">'
 		);	
 }
-
+//display the categories pages in different modes all in cluser structure functions
 function display() {
 	return {
 		displayStores: function() {
@@ -162,9 +167,11 @@ $('#cart').click(function() {
 		.append($('<input type="checkbox">').attr('id',i));
 		totalPrice += cart[i].price;
 	}
-	$('#mainDiv').append(totalPrice, '<button id="submitPayment">Submit Payment</button>').click(function() {
+	
+	$('#mainDiv').append(totalPrice, '<input type="text" id="name" ><button id="submitPayment">Submit Payment</button>').click(function() {
+		bill.push($('input#name').val())
 		newPage();
-		$('#mainDiv').append($('<p></p>').append('Thank You For Shopping From PAJAMAS, Have a Comfort Night'));
+		$('#mainDiv').append($('<p></p>').append('Thank You For Shopping From PAJAMAS and Have a Comfort Night'));
 		bill.push(cart);
 		bill.push(totalPrice);
 		bill.push(billNo++);
