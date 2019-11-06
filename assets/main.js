@@ -70,6 +70,7 @@ var products = [
 
 var newPage = function() {
 	$('#mainDiv').html('');
+	$('#main').html('');
 }
 var buttons = function() {
 	$('#mainDiv').append
@@ -90,32 +91,33 @@ function display() {
 			$('.storeLink').click(function() {
 				newPage();
 					for (var i = 0; i < products.length; i++) {
-						$('#mainDiv').append($('<div id="stDiv"></div>').append($('<card id="productLink"></card>')
+						$('#main').append($('<div id="productLink"></cdiv>')
 						.append($('<img>').attr('src', products[i].src))
 						.append($('<div></div>')
 							.append($('<h3></h3>')
-								.append(products[i].name), $('<br>'), $('<p></p>')
-								.append(products[i].price), $('<br>'), $('<p></p>')
-								.append(products[i].size), $('<input type="checkbox">').attr('id',i)))))
+								.append(products[i].name), $('<p></p>')
+								.append('<b> Price: </b>$', products[i].price), $('<p></p>')
+								.append('<b> Size: </b>', products[i].size), '<b> select: </b>', $('<input type="checkbox">').attr('id',i))))
 					}
 
 				$('#mainDiv').append(
 				 buttons()
 				)
-			}
-
-			);
+			});
 		},
 
 		displayMen: function() {
 			newPage();
 			for (var i = 0; i < products.length; i++) {
 				if (products[i].cat === 'men') {
-					console.log(i)
-					$('#mainDiv').append($('<a id="productLink"></a>')
-					.append($('<img>').attr('src', products[i].src))).append(products[i].name + '\n' + products[i].price + '\n' +products[i].size)
-					.append($('<input type="checkbox">').attr('id', i))
-					.append(buttons());
+						$('#main').append($('<div id="productLink"></cdiv>')
+						.append($('<img>').attr('src', products[i].src))
+						.append($('<div></div>')
+							.append($('<h3></h3>')
+								.append(products[i].name), $('<p></p>')
+								.append('<b> Price: </b>$',products[i].price), $('<p></p>')
+								.append('<b> Size: </b>',products[i].size), '<b> select: </b>', $('<input type="checkbox">').attr('id',i))))
+								.append(buttons());
 				}
 			}
 		},
@@ -124,10 +126,14 @@ function display() {
 			newPage();
 			for (var i = 0; i < products.length; i++) {
 				if (products[i].cat === 'women') {
-					$('#mainDiv').append($('<a id="productLink"></a>')
-					.append($('<img>').attr('src', products[i].src))).append(products[i].name + '\n' + products[i].price + '\n' +products[i].size)
-					.append($('<input type="checkbox">').attr('id', i))
-					.append(buttons());
+						$('#main').append($('<div id="productLink"></cdiv>')
+						.append($('<img>').attr('src', products[i].src))
+						.append($('<div></div>')
+							.append($('<h3></h3>')
+								.append(products[i].name), $('<p></p>')
+								.append('<b> Price: </b>$',products[i].price), $('<p></p>')
+								.append('<b> Size: </b>',products[i].size), '<b> select: </b>', $('<input type="checkbox">').attr('id',i))))
+								.append(buttons());
 				}
 			}
 		},
@@ -136,10 +142,14 @@ function display() {
 			newPage();
 			for (var i = 0; i < products.length; i++) {
 				if (products[i].cat === 'kids') {
-					$('#mainDiv').append($('<a id="productLink"></a>')
-					.append($('<img>').attr('src', products[i].src))).append(products[i].name + '\n' + products[i].price + '\n' +products[i].size)
-					.append($('<input type="checkbox">').attr('id', i))
-					.append(buttons());
+						$('#main').append($('<div id="productLink"></cdiv>')
+						.append($('<img>').attr('src', products[i].src))
+						.append($('<div></div>')
+							.append($('<h3></h3>')
+								.append(products[i].name), $('<p></p>')
+								.append('<b> Price: </b>$',products[i].price), $('<p></p>')
+								.append('<b> Size: </b>',products[i].size), '<b> select: </b>', $('<input type="checkbox">').attr('id',i))))
+								.append(buttons());
 				}
 			}
 		}
@@ -147,7 +157,6 @@ function display() {
 }
 var display = display();
 $('#mainDiv').html(display.displayStores());
-
 
 
 function cartAdd() {
@@ -164,9 +173,13 @@ $('#cart').click(function() {
 	newPage();
 	var totalPrice = 0;
 	for (var i = 0; i < cart.length; i++) {
-	$('#mainDiv').append($('<a id="productLink"></a>')
-		.append($('<img>').attr('src', cart[i].src))).append(cart[i].name + '\n' + cart[i].price + '\n' + cart[i].size)
-		.append($('<input type="checkbox">').attr('id',i));
+		$('#main').append($('<div id="productLink"></cdiv>')
+		.append($('<img>').attr('src', cart[i].src))
+		.append($('<div></div>')
+			.append($('<h3></h3>')
+				.append(cart[i].name), $('<p></p>')
+				.append('<b> Price: </b>$', cart[i].price), $('<p></p>')
+				.append('<b> Size: </b>', cart[i].size), $('<input type="checkbox">').attr('id',i))))
 		totalPrice += cart[i].price;
 	}
 	$('#mainDiv').append(totalPrice, '<button id="submitPayment">Submit Payment</button>').click(function() {
@@ -189,7 +202,5 @@ $('#cart').click(function() {
 $('body').css('background-image',
 	'url("https://dexorate.com/12-minimalist-bedroom-design-ideas-for-cozy-bedroom-inspiration/amazing-minimalist-bedroom-ideas/")')
 .css('background-repeat', 'no-repeat')
-.css('background-size', '100%')
-.css('background-blend-mode', 'darken');
+.css('background-size', 'cover');
 
-// $('h3').

@@ -51,9 +51,25 @@ img {
   cursor: pointer;
 }
 
-#stDiv {
-  columns: 4
+#productLink {
+  height: 30vw;
+  width: 30vw;
+  background-color: grey;
+  border-radius: 30px;
+  opacity: 0.9;
+  margin-bottom: 20px; 
 }
+#productLink img {
+  padding-top: 0;
+  padding-bottom: 10px;
+  height: 60%;
+  width: 50%;
+  opacity: 1;
+}
+
+/*#stDiv {
+  columns: 4
+}*/
 
 #aboutUs {
   background-color: grey;
@@ -64,6 +80,15 @@ img {
   opacity: 0.8
 }
 
+/*#productLink {
+  background-color: grey;
+  padding: 30px;
+  color: white;
+  border-radius: 30px;
+  margin-top: 100px;
+  opacity: 0.8
+}*/
 /*body {
   background-color: red;
-}*/
+}
+*/
