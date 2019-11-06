@@ -1,2 +1,0 @@
-# myPajamas
-myPajamas
