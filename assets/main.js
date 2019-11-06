@@ -41,18 +41,11 @@ var stores = [
 		id: 8,
 		src: 'https://findlogovector.com/wp-content/uploads/2018/12/bershka-logo-vector.png'
 	},
-
 ];
 
 var products = [
+
 	{
-		name: 'PajamaGram Fleece Pajamas Women Soft - Winter Pajamas',
-		price: 29.99,
-		cat: 'kids',
-		size: 'M',
-		src: 'https://images-na.ssl-images-amazon.com/images/I/61qyubA6SkL._UY879_.jpg'
-	},
-		{
 		name: 'PajamaGram Fleece Pajamas Women Soft - Winter Pajamas',
 		price: 49.99,
 		cat: 'women',
@@ -65,7 +58,79 @@ var products = [
 		cat: 'men',
 		size: 'L',
 		src: 'https://images-na.ssl-images-amazon.com/images/I/51quRSwZw%2BL._UX679_.jpg'
-	}
+	},
+
+		{
+		name: 'Matching Striped Pajama Set',
+		price: 19.99,
+		cat: 'family',
+		size: 'standard',
+		src: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1562865371-striped-family-pajamas-1562865355.jpg'
+	},
+
+		{
+		name: 'Christmas Light Matching Family Christmas Pajamas',
+		price: 29.99,
+		cat: 'family',
+		size: 'standard',
+		src: 'https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1542045229-christmas-lights-matching-family-christmas-pajamas-1542045208.jpg'
+	},
+
+		{
+		name: 'Dashing Deer Organic Womens Holiday Matching Family Pajamas',
+		price: 39.95,
+		cat: 'family',
+		size: 'standard',
+		src: 'https://www.burtsbeesbaby.com/media/catalog/product/cache/8bff17bf9316eb1014422e28b25d652c/A/D/AD26323-jams-ALT4.jpg'
+	},
+
+		{
+		name: 'Egyptian Cotton Pajamas',
+		price: 198.00,
+		cat: 'women',
+		size: 'M',
+		src: 'https://cdn.shopify.com/s/files/1/0023/3131/2175/products/0043_2048x.jpg?v=1564756857'
+	},
+
+		{
+		name: 'Sea Haze Linen Pyjamas',
+		price: 130.00,
+		cat: 'men',
+		size: 'L',
+		src: 'https://www.pjpan.co.uk/media/catalog/product/cache/ddc9bd1b85fcfa71e5e91929f8504b46/m/e/mens-blue-linen-pyjamas_sh.jpg'
+	},
+
+		{
+		name: 'Sleepwear Nightwear Clothes Home Pyjamas',
+		price: 5.25,
+		cat: 'men',
+		size: 'M',
+		src: 'https://ae01.alicdn.com/kf/Hc4225e4f470c494fab638f52818e45cfp/2019-Winter-New-Family-Matching-Pajamas-Set-Christmas-Elk-Cartoon-Suit-Sleepwear-Nightwear-Clothes-Home-Pyjamas.jpg_q50.jpg'
+	},
+
+		{
+		name: 'Kids Trains Caboose Flapjack Pajamas',
+		price: 25.99,
+		cat: 'kids',
+		size: 'XS',
+		src: 'https://images.fun.com/products/54870/1-1/kids-trains-caboose-flapjack-pajamas.jpg'
+	},
+
+		{
+		name: 'Kids Pajama Set SLOTH',
+		price: 31.90,
+		cat: 'kids',
+		size: 'XXS',
+		src: 'https://familysta.com/us/wp-content/uploads/sites/22/2019/06/3000505-kids-pajamas-sloth-familysta-8.jpg'
+	},
+
+		{
+		name: 'Classic Pure Color Silk Pyjamas Set For Kids',
+		price: 83.30,
+		cat: 'kids',
+		size: 'S',
+		src: 'https://www.lilysilk.com/media/catalog/product/cache/4/image/1000x/040ec09b1e35df139433887a97daa66f/m/no/8003/klassiske-ren-silke-pyjamas-til-bd-orn-main-8003-1-20190613104502.jpg'
+	},
 ];
 
 var newPage = function() {
@@ -77,7 +142,8 @@ var buttons = function() {
 		('<input id="cartButton" type ="button" value="Add to Cart" onclick="cartAdd()">',
 		 '<input id="menButton" type ="button" value="men" onclick="display.displayMen()">',
 		 '<input id="womenButton" type ="button" value="women" onclick="display.displayWomen()">', 
-		 '<input id="kidsButton" type ="button" value="kids" onclick="display.displayKids()">'
+		 '<input id="kidsButton" type ="button" value="kids" onclick="display.displayKids()">',
+		 '<input id="familyButton" type ="button" value="family" onclick="display.displayFamily()">'
 		);	
 }
 
@@ -100,9 +166,7 @@ function display() {
 								.append('<b> Size: </b>', products[i].size), '<b> select: </b>', $('<input type="checkbox">').attr('id',i))))
 					}
 
-				$('#mainDiv').append(
-				 buttons()
-				)
+				$('#mainDiv').append(buttons())
 			});
 		},
 
@@ -117,9 +181,10 @@ function display() {
 								.append(products[i].name), $('<p></p>')
 								.append('<b> Price: </b>$',products[i].price), $('<p></p>')
 								.append('<b> Size: </b>',products[i].size), '<b> select: </b>', $('<input type="checkbox">').attr('id',i))))
-								.append(buttons());
+								
 				}
 			}
+				$('#mainDiv').append(buttons())
 		},
 
 		displayWomen: function() {
@@ -133,9 +198,10 @@ function display() {
 								.append(products[i].name), $('<p></p>')
 								.append('<b> Price: </b>$',products[i].price), $('<p></p>')
 								.append('<b> Size: </b>',products[i].size), '<b> select: </b>', $('<input type="checkbox">').attr('id',i))))
-								.append(buttons());
+								
 				}
 			}
+			$('#mainDiv').append(buttons())
 		},
 
 		displayKids: function() {
@@ -149,9 +215,27 @@ function display() {
 								.append(products[i].name), $('<p></p>')
 								.append('<b> Price: </b>$',products[i].price), $('<p></p>')
 								.append('<b> Size: </b>',products[i].size), '<b> select: </b>', $('<input type="checkbox">').attr('id',i))))
-								.append(buttons());
+								
 				}
 			}
+			$('#mainDiv').append(buttons())
+		},
+
+		displayFamily: function() {
+			newPage();
+			for (var i = 0; i < products.length; i++) {
+				if (products[i].cat === 'family') {
+						$('#main').append($('<div id="productLink"></cdiv>')
+						.append($('<img>').attr('src', products[i].src))
+						.append($('<div></div>')
+							.append($('<h3></h3>')
+								.append(products[i].name), $('<p></p>')
+								.append('<b> Price: </b>$',products[i].price), $('<p></p>')
+								.append('<b> Size: </b>',products[i].size), '<b> select: </b>', $('<input type="checkbox">').attr('id',i))))
+								
+				}
+			}
+			$('#mainDiv').append(buttons())
 		}
 	}
 }
@@ -180,6 +264,7 @@ $('#cart').click(function() {
 				.append(cart[i].name), $('<p></p>')
 				.append('<b> Price: </b>$', cart[i].price), $('<p></p>')
 				.append('<b> Size: </b>', cart[i].size), $('<input type="checkbox">').attr('id',i))))
+				.append($('<input type="checkbox">').attr('id', i))
 		totalPrice += cart[i].price;
 	}
 	$('#mainDiv').append(totalPrice, '<button id="submitPayment">Submit Payment</button>').click(function() {
@@ -191,11 +276,11 @@ $('#cart').click(function() {
 	})
 });
 
-
-
-
-
-
+$('#us').click(function() {
+	newPage()
+	$('#main').append('<div id="aboutUs"> <h3>About Us</h3><p>this website provides pajamas from the most famous stores in different types for the whole family,with different sizes, colors in good prices  </p> </div>')
+})
+	
 
 
 

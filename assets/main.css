@@ -1,3 +1,8 @@
+.tranisition-slow{
+    transition: all 0.5s;
+}
+
+
 #navDiv {
   display: block;
   margin: 0 auto;
